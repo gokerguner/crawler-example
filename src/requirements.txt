@@ -1,0 +1,4 @@
+requests
+pyinstaller==4.5.1
+pymongo
+nuitka==0.6.5

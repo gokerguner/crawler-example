@@ -1,0 +1,8 @@
+{
+  "DEBUG": 1,
+  "DEBUG_LOG_LEVEL": "INFO",
+  "DB_MAX_SERV_DELAY": 10,
+  "MAXSEVSELDELAY": 60000,
+  "DB_HEPSIBURADA_COLLECTION": "hepsiburada",
+  "DB_HEPSIBURADA_COMMENTS_COLLECTION": "hepsiburada_comments"
+}

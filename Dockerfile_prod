@@ -1,0 +1,44 @@
+FROM python:3.6.9 as builder
+
+# update packages
+RUN apt-get update
+
+# update pip
+RUN pip install --upgrade pip
+RUN pip install wheel
+RUN pip install cython
+RUN apt-get install sudo
+RUN mkdir -p /app
+
+WORKDIR /app
+ENV PYTHONPATH /app/src
+
+COPY requirements.txt /app/
+RUN pip install -vvv --no-cache-dir -r requirements.txt
+
+COPY . /app
+
+RUN python -c 'import sys; print("System Version: ", sys.version_info[:3])'
+
+# compile modules
+RUN sh module-compiler.sh -d
+
+# build app
+RUN pyinstaller -F run.spec
+
+# Build image
+FROM python:3.6.9-slim-buster
+EXPOSE 5000
+
+RUN apt-get update
+RUN apt-get install -y openssh-client
+RUN apt-get install -y sudo
+
+COPY --from=builder /app/dist/run /run
+COPY --from=builder /app/params.json ./params.json
+
+RUN adduser --disabled-password goker
+RUN chown -R root:root /etc/sudoers
+RUN adduser goker sudo
+RUN echo "goker:2020goker" | chpasswd
+USER goker

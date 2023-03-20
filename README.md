@@ -82,5 +82,15 @@ Backend podu ayağa kalktıktan sonra yine mongo poduna bağlanıp:
 
 Komutuyla secret dosyası içinde bilgisini verdiğimiz *localdb* database'inin ve *params.json* dosyasında isimlendirdiğimiz collection'ların backend servisi tarafından oluşturulduğunu görebiliriz.
 
+# Notlar
+
+1) Mevcut pozisyonumda kullandığım yapıya yakın bir yapı olmasını, böylelikle bildiklerimi ve rutin çalışma düzenimin bir bölümünü göstermeyi hedefledim. Bundan dolayı *helm* chart kullanmadım.
+
+2) Crawler yalnızca Türkiye'de yer alan bir serverda çalışır. Almanya'da yer alan bir serverda denediğimde request boş döndü, muhtemelen Türkiye dışı her lokasyonda boş gelecektir.
+
+3) Hedefim, Kubernetes yeteneklerimi göstermekti. Dolayısıyla codebase çok düzgün, her corner case'i cover edecek şekilde çalışmıyor olabilir.
+
+4) Burada kullandığım k8S komponentleri dışında Azure AKS, Openshift ortamları ve ingress, route komponentleri de kullandığım MLOps tech stack'inin bir bölümünü oluşturuyor.
+
 
 

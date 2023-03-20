@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pv-claim
+spec:
+  storageClassName: backend-mongo
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
